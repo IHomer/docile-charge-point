@@ -43,18 +43,6 @@ lazy val loader = (project in file("loader"))
     name := "docile-charge-point-loader"
   )
 
-lazy val lambda = (project in file("aws-lambda"))
-  .dependsOn(core)
-  .dependsOn(loader)
-  .enablePlugins(OssLibPlugin) .settings(
-    commonSettings,
-    name := "docile-charge-point-lambda",
-    retrieveManaged := true,
-    libraryDependencies ++= awsDeps,
-    mainClass := Some("chargepoint.docile.Lambda"),
-    assemblyJarName in assembly := "docile-lambda.jar"
-  )
-
 lazy val coreDeps = Seq(
   "com.thenewmotion.ocpp"       %% "ocpp-j-api"       % "9.2.3",
   "com.typesafe.scala-logging"  %% "scala-logging"    % "3.9.0",
@@ -71,13 +59,6 @@ lazy val commandLineDeps = Seq(
   "com.lihaoyi"                  % "ammonite"         % "2.1.4"    cross CrossVersion.full,
   "org.rogach"                  %% "scallop"          % "3.1.3",
   "ch.qos.logback"               % "logback-classic"  % "1.2.3"
-)
-
-lazy val awsDeps = Seq(
-  "com.amazonaws" % "aws-java-sdk-s3" % "1.11.337",
-  "com.amazonaws" % "aws-java-sdk-lambda" % "1.11.337",
-  "com.amazonaws" % "aws-lambda-java-core" % "1.2.0",
-  "com.amazonaws" % "aws-lambda-java-events" % "1.2.0"
 )
 
 enablePlugins(OssLibPlugin)
