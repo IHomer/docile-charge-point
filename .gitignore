@@ -108,6 +108,9 @@ project/plugins/project/
 ### Scala ###
 *.class
 *.log
+/.java-version
 
 # End of https://www.gitignore.io/api/scala
 /scripts/
+
+autocomplete-template-project/.idea
