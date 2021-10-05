@@ -1,0 +1,26 @@
+# Maven
+target
+pom.xml.versionsBackup
+
+# Idea
+.idea/
+*.iml
+*.ipr
+*.iws
+.buildpath
+*.ids
+
+# Mac
+.DS_Store
+
+#JRebel
+rebel.xml
+
+# vim
+.*.sw?
+
+# ctags
+/tags
+
+# Visual Studio Code
+/.vscode/

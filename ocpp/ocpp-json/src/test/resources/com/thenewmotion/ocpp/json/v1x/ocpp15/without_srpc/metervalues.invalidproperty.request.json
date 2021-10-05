@@ -1,0 +1,33 @@
+{
+    "connectorId": 2,
+    "transactionId": 0,
+    "values": [
+        {
+            "timestamp": "2013-03-07T16:52:16Z",
+            "values": [
+                {
+                    "value": "0"
+                },
+                {
+                    "value": "0",
+                    "unit": "varh",
+                    "measurand": "Energy.Reactive.Import.Register"
+                }
+            ]
+        },
+        {
+            "timestamp": "2013-03-07T19:52:16Z",
+            "values": [
+                {
+                    "value": "20"
+                },
+                {
+                    "value": "20",
+                    "unit": "varh",
+                    "context": "not valid! bork bork!",
+                    "measurand": "Energy.Reactive.Import.Register"
+                }
+            ]
+        }
+    ]
+}
