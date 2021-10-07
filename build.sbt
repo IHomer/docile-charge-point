@@ -6,12 +6,32 @@ lazy val commonSettings = Seq(
   javacOptions ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
 )
 
+val publishSettings = Seq(
+  publishTo := sonatypePublishToBundle.value,
+  sonatypeCredentialHost := "s01.oss.sonatype.org",
+
+  scmInfo := Some(ScmInfo(
+    url("https://github.com/IHomer/docile-charge-point"),
+    "scm:git@github.com:IHomer/docile-charge-point.git"
+  )),
+
+  description := "Scriptable OCPP charge point simulator",
+
+  licenses := Seq("GPLv3" -> new URL("https://www.gnu.org/licenses/gpl-3.0.en.html")),
+
+  homepage := Some(url("https://github.com/IHomer/docile-charge-point")),
+
+  developers := List(
+    Developer(id="tux_rocker", name="Reinier Lamers", email="reinier.lamers@ihomer.nl", url=url("http://reinier.de/"))
+  )
+)
+
 lazy val commandLine = (project in file("cmd"))
   .dependsOn(core)
   .dependsOn(loader)
-  .enablePlugins(OssLibPlugin)
   .settings(
     commonSettings,
+    publishSettings,
     name := "docile-charge-point-command-line",
     libraryDependencies ++= commandLineDeps,
     mainClass := Some("chargepoint.docile.Main"),
@@ -27,18 +47,18 @@ lazy val commandLine = (project in file("cmd"))
   )
 
 lazy val core = (project in file("core"))
-  .enablePlugins(OssLibPlugin)
   .settings(
     commonSettings,
+    publishSettings,
     name := "docile-charge-point",
     libraryDependencies ++= coreDeps
   )
 
 lazy val loader = (project in file("loader"))
   .dependsOn(core)
-  .enablePlugins(OssLibPlugin)
   .settings(
     commonSettings,
+    publishSettings,
     libraryDependencies ++= loaderDeps(scalaVersion.value),
     name := "docile-charge-point-loader"
   )
@@ -61,8 +81,9 @@ lazy val commandLineDeps = Seq(
   "ch.qos.logback"               % "logback-classic"  % "1.2.3"
 )
 
-enablePlugins(OssLibPlugin)
-
 commonSettings
+publishSettings
 
 name := "docile-charge-point-root"
+
+publish / skip := true

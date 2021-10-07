@@ -449,13 +449,7 @@ For maximum flexibility, you can embed docile-charge-point as a library dependen
  To make docile-charge-point a dependency of your Scala project, add this to your library dependencies in your `build.sbt`:
 
 ```scala
-"com.newmotion" %% "docile-charge-point" % "0.5.1"
-```
-
-and make sure that the NewMotion Nexus repository is in your sources by adding this to your `project/plugins.sbt`:
-
-```scala
-resolvers += "TNM" at "http://nexus.thenewmotion.com/content/groups/public"
+"com.infuse-ev" %% "docile-charge-point" % "0.5.1"
 ```
 
 Then, in your code:
@@ -469,13 +463,7 @@ Then, in your code:
 To load text files as test cases, you need another library as a dependency:
 
 ```scala
-"com.newmotion" %% "docile-charge-point-loader" % "0.5.1"
-```
-
-and of course also in this case the resolver in your `project/plugins.sbt`:
-
-```scala
-resolvers += "TNM" at "http://nexus.thenewmotion.com/content/groups/public"
+"com.infuse-ev" %% "docile-charge-point-loader" % "0.5.1"
 ```
 
 Then you'll, besides all the classes for defining and running test cases

@@ -1,5 +1,6 @@
-resolvers += "TNM" at "https://nexus.thenewmotion.com/content/groups/public"
-
-addSbtPlugin("com.newmotion" % "sbt-build-seed" % "5.0.6")
-
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.7")
+
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.10")
+addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.1.2")
+
+addSbtPlugin("com.github.sbt" % "sbt-release" % "1.1.0")

@@ -35,6 +35,9 @@ object Main extends App {
       //      say("going to send heartbeat...")
       //      heartbeat()
       //      say("heartbeat request sent and response received!")
+      say("going to send heartbeat...")
+      heartbeat()
+      say("heartbeat request sent and response received!")
     }
   }
 
