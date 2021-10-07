@@ -449,7 +449,7 @@ For maximum flexibility, you can embed docile-charge-point as a library dependen
  To make docile-charge-point a dependency of your Scala project, add this to your library dependencies in your `build.sbt`:
 
 ```scala
-"com.infuse-ev" %% "docile-charge-point" % "0.5.1"
+"com.infuse-ev" %% "docile-charge-point" % "0.6.0"
 ```
 
 Then, in your code:
@@ -463,7 +463,7 @@ Then, in your code:
 To load text files as test cases, you need another library as a dependency:
 
 ```scala
-"com.infuse-ev" %% "docile-charge-point-loader" % "0.5.1"
+"com.infuse-ev" %% "docile-charge-point-loader" % "0.6.0"
 ```
 
 Then you'll, besides all the classes for defining and running test cases
