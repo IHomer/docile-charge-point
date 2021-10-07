@@ -1,5 +1,5 @@
 lazy val commonSettings = Seq(
-  organization := "com.newmotion",
+  organization := "com.infuse-ev",
   scalaVersion := "2.12.11",
   crossScalaVersions := Seq("2.12.11"),
   scalacOptions ++= Seq("-Xlint:-nullary-unit"),
@@ -44,7 +44,7 @@ lazy val loader = (project in file("loader"))
   )
 
 lazy val coreDeps = Seq(
-  "com.thenewmotion.ocpp"       %% "ocpp-j-api"       % "9.2.3",
+  "com.infuse-ev"               %% "ocpp-j-api"       % "9.2.4",
   "com.typesafe.scala-logging"  %% "scala-logging"    % "3.9.0",
 
   "org.scalatest"               %% "scalatest"        % "3.2.2"    % "test",
