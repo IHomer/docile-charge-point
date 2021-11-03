@@ -13,7 +13,7 @@ class OpsSpec extends AnyFlatSpec {
   "ocpp20transactions.Ops" should "generate a transaction UUID on transaction start" in {
     val (tx, _) = ops().startTransactionAtCablePluggedIn()
 
-    assert(tx.data.id.matches("\\p{XDigit}{8}-\\p{XDigit}{4}-\\p{XDigit}{4}-\\p{XDigit}{4}-\\p{XDigit}{12}"))
+    assert(tx.data.transactionId.matches("\\p{XDigit}{8}-\\p{XDigit}{4}-\\p{XDigit}{4}-\\p{XDigit}{4}-\\p{XDigit}{12}"))
   }
 
   it should "return transaction messages with incrementing sequence numbers" in {

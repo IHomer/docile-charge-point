@@ -46,7 +46,7 @@ trait Ops {
     idToken: IdToken = defaultIdToken
   ): (StartedTransaction, TransactionEventRequest) = {
     val transactionInfo = Transaction(
-      id = UUID.randomUUID().toString,
+      transactionId = UUID.randomUUID().toString,
       chargingState = None,
       timeSpentCharging = None,
       stoppedReason = None,
@@ -67,7 +67,7 @@ trait Ops {
     connectorId: Int = 1
   ): (StartedTransaction, TransactionEventRequest) = {
     val transactionInfo = Transaction(
-      id = UUID.randomUUID().toString,
+      transactionId = UUID.randomUUID().toString,
       chargingState = Some(ChargingState.EVDetected),
       timeSpentCharging = Some(0),
       stoppedReason = None,

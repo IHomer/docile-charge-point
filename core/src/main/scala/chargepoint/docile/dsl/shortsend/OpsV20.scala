@@ -66,7 +66,7 @@ trait OpsV20 {
     cableMaxCurrent: Option[BigDecimal] = None,
     reservationId: Option[Int] = None,
     transactionInfo: Transaction = Transaction(
-      id = "transactie-1",
+      transactionId = "transactie-1",
       chargingState = Some(ChargingState.EVDetected),
       timeSpentCharging = None,
       stoppedReason = None,
