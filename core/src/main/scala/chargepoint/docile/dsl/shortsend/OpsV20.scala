@@ -65,7 +65,7 @@ trait OpsV20 {
     numberOfPhasesUsed: Option[Int] = None,
     cableMaxCurrent: Option[BigDecimal] = None,
     reservationId: Option[Int] = None,
-    transactionData: Transaction = Transaction(
+    transactionInfo: Transaction = Transaction(
       id = "transactie-1",
       chargingState = Some(ChargingState.EVDetected),
       timeSpentCharging = None,
@@ -87,7 +87,7 @@ trait OpsV20 {
       numberOfPhasesUsed,
       cableMaxCurrent,
       reservationId,
-      transactionData,
+      transactionInfo,
       evse,
       idToken
     ))

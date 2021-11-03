@@ -45,7 +45,7 @@ trait Ops {
     connectorId: Int = 1,
     idToken: IdToken = defaultIdToken
   ): (StartedTransaction, TransactionEventRequest) = {
-    val transactionData = Transaction(
+    val transactionInfo = Transaction(
       id = UUID.randomUUID().toString,
       chargingState = None,
       timeSpentCharging = None,
@@ -54,7 +54,7 @@ trait Ops {
     )
 
     startTransaction(
-      transactionData,
+      transactionInfo,
       TriggerReason.Authorized,
       Some(idToken),
       evseId,
@@ -66,7 +66,7 @@ trait Ops {
     evseId: Int = 1,
     connectorId: Int = 1
   ): (StartedTransaction, TransactionEventRequest) = {
-    val transactionData = Transaction(
+    val transactionInfo = Transaction(
       id = UUID.randomUUID().toString,
       chargingState = Some(ChargingState.EVDetected),
       timeSpentCharging = Some(0),
@@ -75,7 +75,7 @@ trait Ops {
     )
 
     startTransaction(
-      transactionData,
+      transactionInfo,
       TriggerReason.CablePluggedIn,
       idToken = None,
       evseId = evseId,
@@ -84,7 +84,7 @@ trait Ops {
   }
 
   def startTransaction(
-    transactionData: Transaction,
+    transactionInfo: Transaction,
     triggerReason: TriggerReason,
     idToken: Option[IdToken] = None,
     evseId: Int = 1,
@@ -92,13 +92,13 @@ trait Ops {
   ): (StartedTransaction, TransactionEventRequest) = {
     val seqNo = getAndIncrementTxCounter(evseId)
 
-    val startedTx = new StartedTransaction(transactionData, evseId, connectorId)
+    val startedTx = new StartedTransaction(transactionInfo, evseId, connectorId)
     val req = TransactionEventRequest(
       seqNo = seqNo,
       evse = Some(EVSE(evseId, Some(connectorId))),
       eventType = TransactionEvent.Started,
       triggerReason = triggerReason,
-      transactionData = transactionData,
+      transactionInfo = transactionInfo,
       meterValue = Some(List(
         MeterValue(List(
           SampledValue(
@@ -170,7 +170,7 @@ trait Ops {
       update(data, triggerReason = TriggerReason.StopAuthorized, idToken = Some(idToken))
 
     def update(
-      transactionData: Transaction,
+      transactionInfo: Transaction,
       triggerReason: TriggerReason,
       idToken: Option[IdToken] = None,
       meterValue: Option[List[MeterValue]] = None
@@ -180,7 +180,7 @@ trait Ops {
         seqNo = seqNo,
         eventType = TransactionEvent.Updated,
         triggerReason = triggerReason,
-        transactionData = transactionData,
+        transactionInfo = transactionInfo,
         idToken = idToken,
         meterValue = meterValue,
         timestamp = Instant.now(),
@@ -203,7 +203,7 @@ trait Ops {
         seqNo = seqNo,
         eventType = TransactionEvent.Ended,
         triggerReason = triggerReason,
-        transactionData = data,
+        transactionInfo = data,
         idToken = None,
         meterValue = Some(List(
           MeterValue(List(
