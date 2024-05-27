@@ -58,6 +58,10 @@ To run the simulator, you first have to compile it with this command:
 sbt assembly
 ```
 
+This command produces a `docile.jar` file at `cmd/target/scala-2.12/docile.jar`, which you can use to run docile.
+
+**_NOTE:_** If you want to use a local version of `ocpp-j-api` make sure the version matches between the `version.sbt` file in https://github.com/IHomer/scala-ocpp/ and the `build.sbt` of this project.
+
 When that completes successfully, you can run the simulator like this, from the root directory of the project:
 
 ```bash
